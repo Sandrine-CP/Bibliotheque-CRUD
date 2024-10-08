@@ -32,6 +32,6 @@ client.checkConnection = () => {
 };
 
 // Store database name into client for further uses
-client.database = DB_NAME;
+client.databaseName = DB_NAME;
 
 module.exports = client;
