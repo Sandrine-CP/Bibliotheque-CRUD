@@ -35,6 +35,15 @@ class BookRepository extends AbstractRepository {
 		);
 		return result.insertId;
 	}
+
+	async delete(id) {
+		const [result] = await this.database.query(
+			`DELETE FROM ${this.table} WHERE id = ?
+            `,
+			[id],
+		);
+		return result.affectedRows;
+	}
 }
 
 module.exports = BookRepository;

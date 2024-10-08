@@ -63,4 +63,20 @@ const add = async (req, res, next) => {
 		next(err);
 	}
 };
-module.exports = { browse, read, update, add };
+
+const remove = async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const affectedRows = await tables.books.delete(id);
+
+		if (affectedRows === 0) {
+			res.status(404).json({ message: "Book not found" });
+		} else {
+			res.status(200).json({ message: "Book successfully deleted" });
+		}
+	} catch (err) {
+		console.error(err);
+		next(err);
+	}
+};
+module.exports = { browse, read, update, add, remove };
