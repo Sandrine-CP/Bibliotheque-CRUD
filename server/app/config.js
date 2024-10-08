@@ -1,20 +1,11 @@
 // Load the express module to create a web application
 
+const cors = require("cors");
 const express = require("express");
-// const cors = require("cors");
 
 const app = express();
 
-// app.use(
-//     cors({
-//       origin: [
-//         process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-//         "http://mysite.com",
-//         "http://another-domain.com",
-//       ],
-//       credentials: true,
-//     })
-//   );
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 app.use(express.json());
 
