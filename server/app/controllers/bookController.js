@@ -10,7 +10,7 @@ const browse = async (req, res, next) => {
 	}
 };
 
-const readId = async (req, res, next) => {
+const read = async (req, res, next) => {
 	try {
 		const { id } = req.params;
 		const bookId = await tables.books.readId(id);
@@ -46,4 +46,21 @@ const update = async (req, res, next) => {
 	}
 };
 
-module.exports = { browse, readId, update };
+const add = async (req, res, next) => {
+	try {
+		// option Vérification que les champs saisis côté client sont bien présents
+		// const { title, description, cover, price } = req.body;
+		// if (!title || !description || !cover || price == null) {
+		//     return res.status(400).json({ message: "Missing required fields" });
+		//   }
+		const newBook = req.body;
+		const insertId = await tables.books.create(newBook);
+		res
+			.status(201)
+			.json({ message: "Book successfully created", id: insertId });
+	} catch (err) {
+		console.error(err);
+		next(err);
+	}
+};
+module.exports = { browse, read, update, add };

@@ -26,6 +26,15 @@ class BookRepository extends AbstractRepository {
 		);
 		return result.affectedRows;
 	}
+
+	async create(book) {
+		const { title, description, cover, price } = book;
+		const [result] = await this.database.query(
+			`INSERT INTO ${this.table} (title, description, cover, price) VALUES (?, ?, ?, ?)`,
+			[title, description, cover, price],
+		);
+		return result.insertId;
+	}
 }
 
 module.exports = BookRepository;
