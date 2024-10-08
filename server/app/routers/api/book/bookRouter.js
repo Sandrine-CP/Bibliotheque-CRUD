@@ -2,9 +2,19 @@ const express = require("express");
 
 const bookRouter = express.Router();
 
-const { browse } = require("../../../controllers/bookController");
+const {
+	browse,
+	readId,
+	update,
+} = require("../../../controllers/bookController");
 
-// http://localhost:5001/api/book
+// GET http://localhost:5001/api/book
 bookRouter.get("/", browse);
+
+// GET http://localhost:5001/api/book/id
+bookRouter.get("/:id", readId);
+
+// PUT http://localhost:5001/api/book/id
+bookRouter.put("/:id", update);
 
 module.exports = bookRouter;
