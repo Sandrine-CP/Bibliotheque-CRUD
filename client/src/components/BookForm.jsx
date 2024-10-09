@@ -8,7 +8,7 @@ function BookForm() {
 	const { id } = useParams();
 	const [book, setBook] = useState({
 		title: "",
-		decsription: "",
+		description: "",
 		cover: "",
 		price: "",
 	});
@@ -61,7 +61,6 @@ function BookForm() {
 
 	return (
 		<Box sx={{ width: "100%", maxWidth: 600, mx: "auto", mt: 5 }}>
-			{id ? "Edit Book" : "Add New Book"}
 			<Typography
 				variant="h4"
 				component="h1"
@@ -69,6 +68,7 @@ function BookForm() {
 				align="center"
 				color="black"
 			>
+				{id ? "Edit Book" : "Add New Book"}
 				<form onSubmit={handleSubmit}>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>

@@ -1,7 +1,27 @@
-.book-card {
-	transition: transform 0.3s ease-in-out;
-}
-
-.book-card:hover {
-	transform: scale(1.02);
+.book-gallery__container {
+	padding: 20px;
+	.book-gallery__title {
+		text-align: center;
+		margin-bottom: 30px;
+		color: black;
+	}
+	.book-gallery__add-button {
+		display: "flex";
+		justify-content: "center";
+		margin-bottom: 30px;
+	}
+	.book__card {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border: 1px solid transparent;
+		transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border
+			0.3s ease-in-out;
+	}
+	.book__card:hover {
+		transform: scale(1.03);
+		border: 1px solid #3f51b5; /* Bordure plus visible au survol */
+		box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+	}
 }

@@ -14,6 +14,7 @@ import {
 	Snackbar,
 	Alert,
 	Button,
+	Box,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -41,6 +42,7 @@ function BookList() {
 			});
 	}, []);
 
+	// Gestion du delete by id
 	const handleDelete = (id) => {
 		if (window.confirm("Are you sure you want to delete this book?")) {
 			api
@@ -73,17 +75,9 @@ function BookList() {
 	};
 
 	return (
-		<div style={{ padding: "20px" }}>
-			<h1 style={{ textAlign: "center", marginBottom: "30px", color: "black" }}>
-				Book Gallery
-			</h1>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					marginBottom: "20px",
-				}}
-			>
+		<div className="book-gallery__container">
+			<h1 className="book-gallery__title">Book Gallery</h1>
+			<div className="book-gallery__add-button">
 				<Button
 					variant="contained"
 					color="success"
@@ -98,34 +92,66 @@ function BookList() {
 			{/* Utilisation de Grid UI material pour afficher les cartes en mode galerie */}
 			<Grid container spacing={3}>
 				{books.map((book) => (
-					<Grid item xs={12} sm={6} md={4} key={book.id}>
+					<Grid item xs={12} sm={6} md={3} key={book.id}>
 						{/* Affichage de chaque livre sous forme de Card */}
-						<Card className="book-card">
+						<Card
+							className="book__card"
+							sx={{
+								height: 300,
+								width: "100%",
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-between",
+								transition: "transform 0.3s ease-in-out",
+								"&:hover": { transform: "scale(1.02)" },
+							}}
+						>
 							<CardMedia
 								component="img"
 								height="200"
 								image={book.cover || "https://via.placeholder.com/150"} // Affiche une image par défaut si `cover` est null
 								alt={book.title}
+								sx={{
+									width: "100%", // Prendre toute la largeur du conteneur
+									height: "200px", // Fixer une hauteur
+									objectFit: "contain", // Adapter l'image pour couvrir le conteneur sans déformer
+								}}
 							/>
-							<CardContent>
+							<Box sx={{ flexGrow: 1, padding: "16px" }}>
+								{/* Titre */}
 								<Typography gutterBottom variant="h5" component="div">
 									{book.title}
 								</Typography>
-								<Typography variant="body2" color="text.secondary">
-									{book.description
-										? `${book.description.substring(0, 100)}...`
-										: "No description available."}
-								</Typography>
-								<Typography
-									variant="h6"
-									color="primary"
-									style={{ marginTop: "10px" }}
+								{/* Description avec limitation de lignes */}
+								{/* <Typography
+									variant="body2"
+									color="text.secondary"
+									sx={{
+										overflow: "hidden",
+										textOverflow: "ellipsis",
+										display: "-webkit-box",
+										WebkitLineClamp: 2, // Affiche jusqu'à 3 lignes maximum
+										WebkitBoxOrient: "vertical",
+										fontSize: "0.85rem",
+									}}
 								>
-									Price: € {book.price}
-								</Typography>
-							</CardContent>
+									{book.description || "No description available."}
+								</Typography> */}
+							</Box>
+							{/* Prix */}
+							<Typography
+								variant="h6"
+								color="primary"
+								sx={{ padding: "8px", alignSelf: "center", fontSize: "1rem" }}
+							>
+								Price: € {book.price}
+							</Typography>
 							<CardContent
-								style={{ display: "flex", justifyContent: "space-between" }}
+								style={{
+									display: "flex",
+									justifyContent: "space-between",
+									alignItems: "center",
+								}}
 							>
 								{/* Voir le livre */}
 								<IconButton
