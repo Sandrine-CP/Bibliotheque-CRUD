@@ -9,7 +9,6 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 ## 🎨 Aperçu
 
 ![Aperçu de l'application](./assets/preview.png)
-<img src="./assets/preview.png" alt="Aperçu de l'application" width="600"/>
 
 ### Fonctionnalités :
 - **Liste des livres** : Affichage de la liste de tous les livres disponibles dans une galerie de cartes.
@@ -45,6 +44,51 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 - Node.js (v14.17.0 ou supérieur)
 - MySQL (ou tout autre SGBD compatible)
 - Git
+
+### 2. Cloner le dépôt
+
+```bash
+git clone https://github.com/Sandrine-CP/CRUD-Practice.git
+cd CRUD-Practice
+
+###3. Configuration de la base de données
+
+	•	Créez une base de données MySQL nommée library.
+	•	Importez le fichier SQL (si fourni) ou créez une table books avec les colonnes suivantes :
+	•	id (int, auto_increment, primary key)
+	•	title (varchar)
+	•	description (text)
+	•	cover (varchar)
+	•	price (decimal)
+
+###4. Variables d’environnement
+
+Créez un fichier .env à la racine de server/ et ajoutez les variables suivantes :
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=library
+PORT=5001
+
+###5. Installation des dépendances
+# Front-End
+cd client
+npm install
+
+# Back-End
+cd ../server
+npm install
+
+###6. Lancement de l’application
+# Démarrage du serveur Express
+cd server
+npm run dev
+
+# Démarrage de l'application React
+cd ../client
+npm run dev
+
+L’application sera disponible à l’adresse : http://localhost:5173.
 
 🤝 Contribuer
 
