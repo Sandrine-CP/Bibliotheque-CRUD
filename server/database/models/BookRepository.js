@@ -15,7 +15,7 @@ class BookRepository extends AbstractRepository {
 			`SELECT id, title, description, cover, price FROM ${this.table} WHERE id = ?`,
 			[id],
 		);
-		return rows;
+		return rows[0];
 	}
 
 	async update(id, book) {

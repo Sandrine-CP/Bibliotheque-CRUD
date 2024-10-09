@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./styles/BookList.css";
 
@@ -9,7 +9,6 @@ import {
 	CardContent,
 	CardMedia,
 	Typography,
-	Button,
 	Grid,
 	IconButton,
 	Snackbar,
@@ -73,7 +72,7 @@ function BookList() {
 
 	return (
 		<div style={{ padding: "20px" }}>
-			<h1 style={{ textAlign: "center", marginBottom: "30px" }}>
+			<h1 style={{ textAlign: "center", marginBottom: "30px", color: "black" }}>
 				Book Gallery
 			</h1>
 			{/* Utilisation de Grid pour afficher les cartes en mode galerie */}
@@ -82,12 +81,12 @@ function BookList() {
 					<Grid item xs={12} sm={6} md={4} key={book.id}>
 						{/* Affichage de chaque livre sous forme de Card */}
 						<Card className="book-card">
-							<CardMedia
+							{/* <CardMedia
 								component="img"
 								height="200"
 								image={book.cover || "https://via.placeholder.com/150"} // Affiche une image par défaut si `cover` est null
 								alt={book.title}
-							/>
+							/> */}
 							<CardContent>
 								<Typography gutterBottom variant="h5" component="div">
 									{book.title}
@@ -102,7 +101,7 @@ function BookList() {
 									color="primary"
 									style={{ marginTop: "10px" }}
 								>
-									Price: €{book.price}
+									Price: € {book.price}
 								</Typography>
 							</CardContent>
 							<CardContent
