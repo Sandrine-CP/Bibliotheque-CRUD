@@ -68,7 +68,7 @@ function BookList() {
 					setSnackbar({
 						open: true,
 						message: "An error occurred while deleting",
-						severity: "eroor",
+						severity: "error",
 					});
 				});
 		}
@@ -77,18 +77,6 @@ function BookList() {
 	return (
 		<div className="book-gallery__container">
 			<h1 className="book-gallery__title">Book Gallery</h1>
-			<div className="book-gallery__add-button">
-				<Button
-					variant="contained"
-					color="success"
-					startIcon={<AddCircleOutlineIcon />}
-					onClick={() => navigate("/book/new")}
-					sx={{ textTransform: "none" }}
-					type="button"
-				>
-					Add New Book
-				</Button>
-			</div>
 			{/* Utilisation de Grid UI material pour afficher les cartes en mode galerie */}
 			<Grid container spacing={3}>
 				{books.map((book) => (
@@ -108,13 +96,13 @@ function BookList() {
 						>
 							<CardMedia
 								component="img"
-								height="200"
 								image={book.cover || "https://via.placeholder.com/150"} // Affiche une image par défaut si `cover` est null
 								alt={book.title}
 								sx={{
-									width: "100%", // Prendre toute la largeur du conteneur
-									height: "200px", // Fixer une hauteur
-									objectFit: "contain", // Adapter l'image pour couvrir le conteneur sans déformer
+									width: "100%",
+									height: "180px",
+									objectFit: "contain",
+									marginTop: "10px",
 								}}
 							/>
 							<Box sx={{ flexGrow: 1, padding: "16px" }}>
@@ -122,27 +110,17 @@ function BookList() {
 								<Typography gutterBottom variant="h5" component="div">
 									{book.title}
 								</Typography>
-								{/* Description avec limitation de lignes */}
-								{/* <Typography
-									variant="body2"
-									color="text.secondary"
-									sx={{
-										overflow: "hidden",
-										textOverflow: "ellipsis",
-										display: "-webkit-box",
-										WebkitLineClamp: 2, // Affiche jusqu'à 3 lignes maximum
-										WebkitBoxOrient: "vertical",
-										fontSize: "0.85rem",
-									}}
-								>
-									{book.description || "No description available."}
-								</Typography> */}
 							</Box>
 							{/* Prix */}
 							<Typography
 								variant="h6"
 								color="primary"
-								sx={{ padding: "8px", alignSelf: "center", fontSize: "1rem" }}
+								sx={{
+									padding: "8px",
+									alignSelf: "center",
+									fontSize: "1rem",
+									color: "#3700B3",
+								}}
 							>
 								Price: € {book.price}
 							</Typography>
@@ -158,6 +136,9 @@ function BookList() {
 									aria-label="view"
 									color="primary"
 									onClick={() => navigate(`/book/${book.id}`)}
+									sx={{
+										color: "#6200EE",
+									}}
 								>
 									<VisibilityIcon />
 								</IconButton>
@@ -166,6 +147,9 @@ function BookList() {
 									aria-label="edit"
 									color="secondary"
 									onClick={() => navigate(`/book/update/${book.id}`)}
+									sx={{
+										color: "#03DAC5",
+									}}
 								>
 									<EditIcon />
 								</IconButton>
@@ -182,6 +166,24 @@ function BookList() {
 					</Grid>
 				))}
 			</Grid>
+			<div className="book-gallery__add-button">
+				<Button
+					variant="contained"
+					color="success"
+					startIcon={<AddCircleOutlineIcon />}
+					onClick={() => navigate("/book/new")}
+					sx={{
+						textTransform: "none",
+						backgroundColor: "#03DAC5",
+						color: "black",
+						marginTop: "25px",
+					}}
+					type="button"
+				>
+					Add New Book
+				</Button>
+			</div>
+
 			<Snackbar
 				open={snackbar.open}
 				autoHideDuration={8000}

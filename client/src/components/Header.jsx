@@ -9,13 +9,22 @@ function Header() {
 		<AppBar
 			position="static"
 			sx={{
-				backgroundColor: "#a2d2ff",
+				backgroundColor: "#6200EE",
 				boxShadow: "none",
 			}}
 		>
 			<Toolbar sx={{ justifyContent: "space-between" }}>
 				{/* Icône Home */}
-				<IconButton color="inherit" href="/" sx={{ marginRight: 1 }}>
+				<IconButton
+					color="inherit"
+					href="/"
+					sx={{
+						marginRight: 1,
+						"&:hover": {
+							color: "#03DAC5",
+						},
+					}}
+				>
 					<HomeIcon />
 				</IconButton>
 				<Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
@@ -29,13 +38,24 @@ function Header() {
 						color="inherit"
 						href="https://github.com/Sandrine-CP"
 						target="_blank"
+						sx={{
+							"&:hover": {
+								color: "#03DAC5",
+							},
+						}}
 					>
+						{" "}
 						<GitHubIcon />
 					</IconButton>
 					<IconButton
 						color="inherit"
 						href="https://www.linkedin.com/in/sandrine-cazenave-peyrasson"
 						target="_blank"
+						sx={{
+							"&:hover": {
+								color: "#03DAC5",
+							},
+						}}
 					>
 						<LinkedInIcon />
 					</IconButton>
