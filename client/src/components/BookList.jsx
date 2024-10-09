@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./styles/BookList.css";
 
-// Si tu utilises Material UI, importe les composants de Card :
+// composants Material UI
 import {
 	Card,
 	CardContent,
@@ -11,10 +11,22 @@ import {
 	Typography,
 	Button,
 	Grid,
+	IconButton,
+	Snackbar,
+	Alert,
 } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 function BookList() {
 	const [books, setBooks] = useState([]);
+	const [snackbar, setSnackbar] = useState({
+		open: false,
+		message: "",
+		severity: "",
+	});
+	const navigate = useNavigate();
 
 	// Récupère tous les livres depuis l'API
 	useEffect(() => {
@@ -28,6 +40,37 @@ function BookList() {
 			});
 	}, []);
 
+	const handleDelete = (id) => {
+		if (window.confirm("Are you sure you want to delete this book?")) {
+			api
+				.delete(`/book/${id}`)
+				.then((response) => {
+					if (response.status === 200 && response.data.message) {
+						setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+						setSnackbar({
+							open: true,
+							message: response.data.message,
+							severity: "success",
+						});
+					} else {
+						setSnackbar({
+							open: true,
+							message: "Failed to delete book",
+							severity: "error",
+						});
+					}
+				})
+				.catch((error) => {
+					console.error("Error deleting book:", error);
+					setSnackbar({
+						open: true,
+						message: "An error occurred while deleting",
+						severity: "eroor",
+					});
+				});
+		}
+	};
+
 	return (
 		<div style={{ padding: "20px" }}>
 			<h1 style={{ textAlign: "center", marginBottom: "30px" }}>
@@ -38,13 +81,7 @@ function BookList() {
 				{books.map((book) => (
 					<Grid item xs={12} sm={6} md={4} key={book.id}>
 						{/* Affichage de chaque livre sous forme de Card */}
-						<Card
-							style={{
-								height: "100%",
-								display: "flex",
-								flexDirection: "column",
-							}}
-						>
+						<Card className="book-card">
 							<CardMedia
 								component="img"
 								height="200"
@@ -65,23 +102,55 @@ function BookList() {
 									color="primary"
 									style={{ marginTop: "10px" }}
 								>
-									Price: ${book.price}
+									Price: €{book.price}
 								</Typography>
 							</CardContent>
-							<CardContent style={{ marginTop: "auto" }}>
-								<Link
-									to={`/book/${book.id}`}
-									style={{ textDecoration: "none" }}
+							<CardContent
+								style={{ display: "flex", justifyContent: "space-between" }}
+							>
+								{/* Voir le livre */}
+								<IconButton
+									aria-label="view"
+									color="primary"
+									onClick={() => navigate(`/book/${book.id}`)}
 								>
-									<Button variant="contained" color="primary">
-										Détails
-									</Button>
-								</Link>
+									<VisibilityIcon />
+								</IconButton>
+								{/* Éditer le livre */}
+								<IconButton
+									aria-label="edit"
+									color="secondary"
+									onClick={() => navigate(`/book/update/${book.id}`)}
+								>
+									<EditIcon />
+								</IconButton>
+								{/* Supprimer le livre */}
+								<IconButton
+									aria-label="delete"
+									color="error"
+									onClick={() => handleDelete(book.id)}
+								>
+									<DeleteIcon />
+								</IconButton>
 							</CardContent>
 						</Card>
 					</Grid>
 				))}
 			</Grid>
+			<Snackbar
+				open={snackbar.open}
+				autoHideDuration={8000}
+				onClose={() => setSnackbar({ open: false, message: "", severity: "" })}
+			>
+				<Alert
+					onClose={() =>
+						setSnackbar({ open: false, message: "", severity: "" })
+					}
+					severity={snackbar.severity}
+				>
+					{snackbar.message}
+				</Alert>
+			</Snackbar>
 		</div>
 	);
 }
