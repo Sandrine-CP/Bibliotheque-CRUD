@@ -30,7 +30,7 @@ const router = createBrowserRouter([
 				element: <BookForm />,
 			},
 			{
-				path: "/book/add",
+				path: "/book/new",
 				element: <AddBook />,
 			},
 		],

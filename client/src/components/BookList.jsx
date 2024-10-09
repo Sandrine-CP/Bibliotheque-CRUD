@@ -13,10 +13,12 @@ import {
 	IconButton,
 	Snackbar,
 	Alert,
+	Button,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 function BookList() {
 	const [books, setBooks] = useState([]);
@@ -75,18 +77,36 @@ function BookList() {
 			<h1 style={{ textAlign: "center", marginBottom: "30px", color: "black" }}>
 				Book Gallery
 			</h1>
-			{/* Utilisation de Grid pour afficher les cartes en mode galerie */}
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					marginBottom: "20px",
+				}}
+			>
+				<Button
+					variant="contained"
+					color="success"
+					startIcon={<AddCircleOutlineIcon />}
+					onClick={() => navigate("/book/new")}
+					sx={{ textTransform: "none" }}
+					type="button"
+				>
+					Add New Book
+				</Button>
+			</div>
+			{/* Utilisation de Grid UI material pour afficher les cartes en mode galerie */}
 			<Grid container spacing={3}>
 				{books.map((book) => (
 					<Grid item xs={12} sm={6} md={4} key={book.id}>
 						{/* Affichage de chaque livre sous forme de Card */}
 						<Card className="book-card">
-							{/* <CardMedia
+							<CardMedia
 								component="img"
 								height="200"
 								image={book.cover || "https://via.placeholder.com/150"} // Affiche une image par défaut si `cover` est null
 								alt={book.title}
-							/> */}
+							/>
 							<CardContent>
 								<Typography gutterBottom variant="h5" component="div">
 									{book.title}
