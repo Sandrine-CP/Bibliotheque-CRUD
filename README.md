@@ -9,6 +9,7 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 ## 🎨 Aperçu
 
 ![Aperçu de l'application](./assets/preview.png)
+<img src="./assets/preview.png" alt="Aperçu de l'application" width="600"/>
 
 ### Fonctionnalités :
 - **Liste des livres** : Affichage de la liste de tous les livres disponibles dans une galerie de cartes.
