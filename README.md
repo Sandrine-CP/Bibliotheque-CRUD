@@ -37,25 +37,7 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
   - Vite pour le démarrage rapide du projet
 
 ## Structure du projet
- CRUD-Practice/
-├── client/                 # Répertoire du front-end React
-│   ├── public/             # Fichiers statiques
-│   ├── src/                # Code source de l'application React
-│   │   ├── assets/         # Images, icônes, etc.
-│   │   ├── components/     # Composants de l'interface utilisateur
-│   │   ├── pages/          # Pages (BookList, BookDetail, BookForm)
-│   │   ├── services/       # Services pour les appels API (ex: api.js)
-│   │   ├── App.jsx         # Composant principal
-│   │   └── main.jsx        # Point d'entrée React
-│   └── package.json        # Dépendances front-end
-├── server/                 # Répertoire du back-end Express
-│   ├── app/                # Logique métier (contrôleurs, routeurs)
-│   ├── database/           # Configuration de la base de données
-│   ├── index.js            # Point d'entrée du serveur Express
-│   └── package.json        # Dépendances back-end
-├── README.md               # Documentation du projet
-└── .gitignore              # Fichiers et répertoires à ignorer par Git
-
+ 
 ## ⚙️ Installation
 
 ### 1. Prérequis
@@ -63,37 +45,6 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 - Node.js (v14.17.0 ou supérieur)
 - MySQL (ou tout autre SGBD compatible)
 - Git
-
-### 2. Cloner le dépôt
-
-```bash
-git clone https://github.com/Sandrine-CP/CRUD-Practice.git
-cd CRUD-Practice
-
-### Comment utiliser ce modèle ?
-
-1. Crée un fichier `README.md` à la racine de ton projet.
-2. Copie le contenu ci-dessus et ajuste les détails selon les spécificités de ton projet.
-3. Ajoute les informations de configuration spécifiques si nécessaire (par exemple, les variables d'environnement ou les scripts SQL).
-4. Publie-le sur ton dépôt GitHub.
-
-Cela devrait fournir un aperçu complet et structuré de ton projet, facilitant ainsi la compréhension et l'utilisation par d'autres développeurs.
-
-🌟 Fonctionnalités à Améliorer
-
-Quelques idées pour améliorer l’application :
-
-	•	Gestion de l’authentification : Ajouter une connexion utilisateur pour restreindre l’accès aux modifications.
-	•	Recherche de livres : Filtrer les livres par titre, auteur ou catégorie.
-	•	Filtrage avancé : Tri par prix, date d’ajout, etc.
-	•	Pagination : Charger les livres par lots pour améliorer les performances.
-
-🔗 Liens Utiles
-
-	•	Documentation de React
-	•	Documentation de Material-UI
-	•	Documentation de Node.js
-	•	Documentation d’Express
 
 🤝 Contribuer
 
@@ -108,9 +59,6 @@ Les contributions sont les bienvenues ! Si vous avez des suggestions ou des bugs
 ✨ Auteur
 
 Sandrine CP
-
-	•	GitHub
-	•	LinkedIn
 
 📜 Licence
 
