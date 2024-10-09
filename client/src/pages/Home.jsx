@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import { dividerClasses, Fab } from "@mui/material";
+import { useEffect, useState, useCallback } from "react";
+import { Fab } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import BookList from "../components/BookList";
 import "./styles/Home.css";
 
 function Home() {
 	const [showScroll, setShowScroll] = useState(false);
-	const checkScrollTop = () => {
+	const checkScrollTop = useCallback(() => {
 		if (!showScroll && window.pageYOffset > 300) {
 			setShowScroll(true);
 		} else if (showScroll && window.pageYOffset <= 300) {
 			setShowScroll(false);
 		}
-	};
+	}, [showScroll]);
 
 	useEffect(() => {
 		window.addEventListener("scroll", checkScrollTop);
 		return () => window.removeEventListener("scroll", checkScrollTop);
-	}, [showScroll]);
+	}, [checkScrollTop]);
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
