@@ -9,7 +9,7 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 ## 🎨 Aperçu
 
 	###Home
-![Aperçu de l'application](https://github.com/Sandrine-CP/CRUD-Practice/blob/main/client/src/assets/preview.png?raw=true)
+![Aperçu de l'application](client/src/assets/preview-home.png)
 	###Update
 ![Aperçu de l'application](client/src/assets/preview-update.png)
 	###Create
