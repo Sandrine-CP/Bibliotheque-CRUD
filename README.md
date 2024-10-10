@@ -36,6 +36,8 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
   - Vite pour le démarrage rapide du projet
 
 ## Structure du projet
+
+![Aperçu de l'application]client/src/assets/structure_projet.png
  
 ## ⚙️ Installation
 
