@@ -8,9 +8,13 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 
 ## 🎨 Aperçu
 
+	###Home
 ![Aperçu de l'application](https://github.com/Sandrine-CP/CRUD-Practice/blob/main/client/src/assets/preview.png?raw=true)
-
-### Fonctionnalités :
+	###Update
+![Aperçu de l'application](client/src/assets/preview-update.png)
+	###Create
+![Aperçu de l'application](client/src/assets/preview-create.png)
+## Fonctionnalités :
 - **Liste des livres** : Affichage de la liste de tous les livres disponibles dans une galerie de cartes.
 - **Détails d'un livre** : Visualisation des informations détaillées d'un livre.
 - **Ajout de livre** : Formulaire permettant l'ajout d'un nouveau livre.
