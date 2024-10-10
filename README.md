@@ -37,7 +37,7 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 
 ## Structure du projet
 
-![Aperçu de l'application]client/src/assets/structure_projet.png
+![Aperçu de l'application]!(https://github.com/Sandrine-CP/CRUD-Practice/blob/main/client/src/assets/structure_projet.png?raw=true)
  
 ## ⚙️ Installation
 
