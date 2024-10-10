@@ -8,11 +8,8 @@ L'application utilise **React** et **Material-UI** pour la partie front-end, ave
 
 ## 🎨 Aperçu
 
-	###Home
 ![Aperçu de l'application](client/src/assets/preview-home.png)
-	###Update
 ![Aperçu de l'application](client/src/assets/preview-update.png)
-	###Create
 ![Aperçu de l'application](client/src/assets/preview-create.png)
 ## Fonctionnalités :
 - **Liste des livres** : Affichage de la liste de tous les livres disponibles dans une galerie de cartes.
